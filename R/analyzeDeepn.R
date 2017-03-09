@@ -1,7 +1,6 @@
 analyzeDeepn <- function(infile, outfile="stat.csv", debug=FALSE, sort=1, port) {
   Data <- importFromDeepn(infile)
   Data$omega <- overdisp(Data)
-  print (formatC(Data$omega["Baseline"], digits=2, format="f"))
   if (!missing(port)) {
     con <- socketConnection(host="localhost", port=port)
     out <- c("Overdispersion estimates",
